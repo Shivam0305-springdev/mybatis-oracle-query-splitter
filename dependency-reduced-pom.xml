@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.enterprise.mybatis</groupId>
+  <artifactId>mybatis-oracle-splitter</artifactId>
+  <name>MyBatis Oracle SQL Splitter</name>
+  <version>1.0.0</version>
+  <description>Production-ready tool for extracting Oracle-specific SQL from MyBatis mappers</description>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer>
+                  <mainClass>com.enterprise.mybatis.cli.Main</mainClass>
+                </transformer>
+              </transformers>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <properties>
+    <jsqlparser.version>4.7</jsqlparser.version>
+    <snakeyaml.version>2.2</snakeyaml.version>
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <jackson.version>2.15.3</jackson.version>
+    <maven.compiler.target>17</maven.compiler.target>
+    <slf4j.version>2.0.9</slf4j.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <logback.version>1.4.11</logback.version>
+  </properties>
+</project>

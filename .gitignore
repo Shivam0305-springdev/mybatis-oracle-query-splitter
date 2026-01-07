@@ -1,0 +1,7 @@
+./.idea
+
+/target
+
+/output
+
+mybatis-oracle-splitter.log

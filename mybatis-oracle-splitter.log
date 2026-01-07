@@ -1,0 +1,121 @@
+2026-01-07 23:54:36.097 [main] INFO  com.enterprise.mybatis.cli.Main - MyBatis Oracle Splitter v1.0.0
+2026-01-07 23:54:36.102 [main] INFO  com.enterprise.mybatis.cli.Main - =====================================
+2026-01-07 23:54:36.106 [main] INFO  com.enterprise.mybatis.cli.Main - Validating 1 input file(s)...
+2026-01-07 23:54:36.109 [main] INFO  com.enterprise.mybatis.cli.Main - All input files validated successfully
+2026-01-07 23:54:36.111 [main] INFO  com.enterprise.mybatis.cli.Main - Output directory: C:\Users\Shivam\WORK\mybatis-oracle-splitter\output
+2026-01-07 23:54:36.113 [main] INFO  com.enterprise.mybatis.cli.Main - Using rules file: C:\Users\Shivam\WORK\mybatis-oracle-splitter\oracle-rules.yaml
+2026-01-07 23:54:36.115 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Initializing Oracle Splitter Engine
+2026-01-07 23:54:36.119 [main] INFO  com.enterprise.mybatis.engine.OracleRuleCatalog - Loading Oracle rules from: oracle-rules.yaml
+2026-01-07 23:54:36.391 [main] INFO  com.enterprise.mybatis.engine.OracleRuleCatalog - Loaded 48 Oracle detection rules
+2026-01-07 23:54:36.402 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Loaded 48 Oracle detection rules
+2026-01-07 23:54:36.407 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Engine initialized successfully
+2026-01-07 23:54:36.407 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Starting processing of 1 mapper file(s)
+2026-01-07 23:54:36.408 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Output directory: output
+2026-01-07 23:54:36.409 [main] INFO  com.enterprise.mybatis.xml.MapperFileProcessor - Processing mapper file: UserMapper.xml
+2026-01-07 23:54:36.546 [main] WARN  com.enterprise.mybatis.engine.OracleRuleEngine - Failed to parse SQL for getUserReport, using text-only analysis: net.sf.jsqlparser.parser.ParseException: Encountered unexpected token: "{d" "{d"
+    at line 9, column 32.
+
+Was expecting one of:
+
+    "."
+    "::"
+    "["
+    "^"
+    <EOF>
+    <ST_SEMICOLON>
+
+2026-01-07 23:54:36.554 [main] INFO  com.enterprise.mybatis.engine.OracleRuleEngine - Statement getUserReport contains Oracle-specific features: 2 rule(s) matched
+2026-01-07 23:54:36.580 [main] WARN  com.enterprise.mybatis.parser.SqlAstProcessor - AST parsing failed for getUserReport, falling back to text processing: net.sf.jsqlparser.parser.ParseException: Encountered unexpected token: "{d" "{d"
+    at line 9, column 32.
+
+Was expecting one of:
+
+    "."
+    "::"
+    "["
+    "^"
+    <EOF>
+    <ST_SEMICOLON>
+
+2026-01-07 23:54:36.608 [main] INFO  c.e.mybatis.engine.GlobalOracleFragmentRegistry - Registered Oracle fragment: oracle_examples\UserMapper_getUserReport_null_handling (category: NULL_HANDLING, source: examples\UserMapper.xml)
+2026-01-07 23:54:36.611 [main] INFO  c.e.mybatis.engine.GlobalOracleFragmentRegistry - Registered Oracle fragment: oracle_examples\UserMapper_getUserReport_null_handling_1 (category: NULL_HANDLING, source: examples\UserMapper.xml)
+2026-01-07 23:54:36.613 [main] INFO  com.enterprise.mybatis.parser.SqlAstProcessor - Processed getUserReport: extracted 2 fragment(s)
+2026-01-07 23:54:36.627 [main] INFO  com.enterprise.mybatis.engine.OracleRuleEngine - Statement getUserHierarchy contains Oracle-specific features: 4 rule(s) matched
+2026-01-07 23:54:36.633 [main] INFO  c.e.mybatis.engine.GlobalOracleFragmentRegistry - Registered Oracle fragment: oracle_examples\UserMapper_getUserHierarchy_hierarchical (category: HIERARCHICAL, source: examples\UserMapper.xml)
+2026-01-07 23:54:36.635 [main] INFO  com.enterprise.mybatis.parser.SqlAstProcessor - Processed getUserHierarchy: extracted 1 fragment(s)
+2026-01-07 23:54:36.646 [main] INFO  com.enterprise.mybatis.engine.OracleRuleEngine - Statement getDepartmentUsers contains Oracle-specific features: 1 rule(s) matched
+2026-01-07 23:54:36.650 [main] INFO  com.enterprise.mybatis.parser.SqlAstProcessor - Processed getDepartmentUsers: extracted 0 fragment(s)
+2026-01-07 23:54:36.660 [main] WARN  com.enterprise.mybatis.engine.OracleRuleEngine - Failed to parse SQL for getUsersWithIndex, using text-only analysis: net.sf.jsqlparser.parser.ParseException: Encountered unexpected token: "{" "{"
+    at line 5, column 24.
+
+Was expecting one of:
+
+    "."
+    "::"
+    "["
+    "^"
+    <EOF>
+    <ST_SEMICOLON>
+
+2026-01-07 23:54:36.664 [main] INFO  com.enterprise.mybatis.engine.OracleRuleEngine - Statement getUsersWithIndex contains Oracle-specific features: 1 rule(s) matched
+2026-01-07 23:54:36.671 [main] WARN  com.enterprise.mybatis.parser.SqlAstProcessor - AST parsing failed for getUsersWithIndex, falling back to text processing: net.sf.jsqlparser.parser.ParseException: Encountered unexpected token: "{" "{"
+    at line 5, column 24.
+
+Was expecting one of:
+
+    "."
+    "::"
+    "["
+    "^"
+    <EOF>
+    <ST_SEMICOLON>
+
+2026-01-07 23:54:36.675 [main] INFO  c.e.mybatis.engine.GlobalOracleFragmentRegistry - Registered Oracle fragment: oracle_examples\UserMapper_getUsersWithIndex_hint (category: HINT, source: examples\UserMapper.xml)
+2026-01-07 23:54:36.677 [main] INFO  com.enterprise.mybatis.parser.SqlAstProcessor - Processed getUsersWithIndex: extracted 1 fragment(s)
+2026-01-07 23:54:36.682 [main] INFO  com.enterprise.mybatis.engine.OracleRuleEngine - Statement getCurrentDate contains Oracle-specific features: 1 rule(s) matched
+2026-01-07 23:54:36.686 [main] INFO  com.enterprise.mybatis.parser.SqlAstProcessor - Processed getCurrentDate: extracted 0 fragment(s)
+2026-01-07 23:54:36.885 [main] WARN  com.enterprise.mybatis.engine.OracleRuleEngine - Failed to parse SQL for insertUser, using text-only analysis: net.sf.jsqlparser.parser.ParseException: Encountered unexpected token: "," ","
+    at line 5, column 25.
+
+Was expecting one of:
+
+    ")"
+    "::"
+    "["
+    "^"
+
+2026-01-07 23:54:36.890 [main] INFO  com.enterprise.mybatis.engine.OracleRuleEngine - Statement insertUser contains Oracle-specific features: 1 rule(s) matched
+2026-01-07 23:54:37.072 [main] WARN  com.enterprise.mybatis.parser.SqlAstProcessor - AST parsing failed for insertUser, falling back to text processing: net.sf.jsqlparser.parser.ParseException: Encountered unexpected token: "," ","
+    at line 5, column 25.
+
+Was expecting one of:
+
+    ")"
+    "::"
+    "["
+    "^"
+
+2026-01-07 23:54:37.074 [main] INFO  c.e.mybatis.engine.GlobalOracleFragmentRegistry - Registered Oracle fragment: oracle_examples\UserMapper_insertUser_sequence (category: SEQUENCE, source: examples\UserMapper.xml)
+2026-01-07 23:54:37.075 [main] INFO  com.enterprise.mybatis.parser.SqlAstProcessor - Processed insertUser: extracted 1 fragment(s)
+2026-01-07 23:54:37.210 [main] INFO  com.enterprise.mybatis.xml.MapperFileProcessor - Completed processing: UserMapper.xml - 7 statements, 6 modified
+2026-01-07 23:54:37.212 [main] INFO  c.enterprise.mybatis.xml.OracleFragmentXmlWriter - Writing Oracle fragments to: output\oracle-fragments.xml
+2026-01-07 23:54:37.252 [main] INFO  c.enterprise.mybatis.xml.OracleFragmentXmlWriter - Wrote 5 Oracle fragments across 4 categories
+2026-01-07 23:54:37.253 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - =====================================
+2026-01-07 23:54:37.255 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - PROCESSING SUMMARY
+2026-01-07 23:54:37.255 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - =====================================
+2026-01-07 23:54:37.263 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Files processed:        1
+2026-01-07 23:54:37.263 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Files modified:         1
+2026-01-07 23:54:37.264 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Total SQL statements:   7
+2026-01-07 23:54:37.265 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Modified statements:    6
+2026-01-07 23:54:37.266 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Extracted fragments:    5
+2026-01-07 23:54:37.268 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - 
+2026-01-07 23:54:37.270 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - Fragments by category:
+2026-01-07 23:54:37.274 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine -   NULL_HANDLING: 2
+2026-01-07 23:54:37.275 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine -   HIERARCHICAL: 1
+2026-01-07 23:54:37.275 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine -   HINT: 1
+2026-01-07 23:54:37.275 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine -   SEQUENCE: 1
+2026-01-07 23:54:37.275 [main] INFO  c.enterprise.mybatis.engine.OracleSplitterEngine - =====================================
+2026-01-07 23:54:37.276 [main] INFO  com.enterprise.mybatis.cli.Main - =====================================
+2026-01-07 23:54:37.276 [main] INFO  com.enterprise.mybatis.cli.Main - Processing completed successfully!
+2026-01-07 23:54:37.276 [main] INFO  com.enterprise.mybatis.cli.Main - Processed 1 mapper file(s)
+2026-01-07 23:54:37.276 [main] INFO  com.enterprise.mybatis.cli.Main - Output written to: C:\Users\Shivam\WORK\mybatis-oracle-splitter\output

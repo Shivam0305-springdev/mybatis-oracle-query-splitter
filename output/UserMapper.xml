@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+        
+    <!-- Simple query with SYSDATE -->
+        
+    <select id="getActiveUsers" resultType="User">
+        SELECT user_id, username, email, created_date
+        FROM users
+        WHERE status = 'ACTIVE'
+        AND created_date &gt;= SYSDATE - 30
+        ORDER BY username
+    </select>
+        
+    <!--    &lt;!&ndash; Query with ROWNUM pagination &ndash;&gt;-->
+        
+    <!--    <select id="getUsersPage" resultType="User">-->
+        
+    <!--        SELECT * FROM (-->
+        
+    <!--        SELECT user_id, username, email,-->
+        
+    <!--        ROW_NUMBER() OVER (ORDER BY user_id) as rn-->
+        
+    <!--        FROM users-->
+        
+    <!--        WHERE status = 'ACTIVE'-->
+        
+    <!--        ) WHERE ROWNUM <= #{maxRows}-->
+        
+    <!--    </select>-->
+        
+    <!-- Query with NVL and DECODE -->
+        
+    <select id="getUserReport" resultType="UserReport">
+        SELECT
+        user_id,
+        username,
+        &lt;include refid="oracle_examples\UserMapper_getUserReport_null_handling"/&gt;(email, 'no-email@example.com') as email,
+        &lt;include refid="oracle_examples\UserMapper_getUserReport_null_handling_1"/&gt;(status, 'A', 'Active', 'I', 'Inactive', 'Unknown') as status_text,
+        created_date
+        FROM users
+        WHERE department_id = #{departmentId}
+    </select>
+        
+    <!-- Hierarchical query with CONNECT BY -->
+        
+    <select id="getUserHierarchy" resultType="UserNode">
+        SELECT
+        user_id,
+        username,
+        manager_id,
+        LEVEL as hierarchy_level,
+        SYS_CONNECT_BY_PATH(username, '/') as path
+        FROM users
+        &lt;include refid="oracle_examples\UserMapper_getUserHierarchy_hierarchical"/&gt;
+    </select>
+        
+    <!-- Query with sequence -->
+        
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO users (
+        user_id, username, email, created_date, status
+        ) VALUES (
+        user_seq.&lt;include refid="oracle_examples\UserMapper_insertUser_sequence"/&gt;,
+        #{username},
+        #{email},
+        SYSDATE,
+        'ACTIVE'
+        )
+    </insert>
+        
+    <!-- Query with LISTAGG -->
+        
+    <select id="getDepartmentUsers" resultType="DepartmentSummary">
+        SELECT
+        department_id,
+        department_name,
+        LISTAGG(username, ', ') WITHIN GROUP (ORDER BY username) as user_list,
+        COUNT(*) as user_count
+        FROM users u
+        JOIN departments d ON u.department_id = d.department_id
+        GROUP BY department_id, department_name
+    </select>
+        
+    <!-- Query with Oracle hint -->
+        
+    <select id="getUsersWithIndex" resultType="User">
+        SELECT &lt;include refid="oracle_examples\UserMapper_getUsersWithIndex_hint"/&gt;(users idx_user_email) */
+        user_id, username, email
+        FROM users
+        WHERE email = #{email}
+    </select>
+        
+    <!-- Query with DUAL -->
+        
+    <select id="getCurrentDate" resultType="java.sql.Timestamp">
+        SELECT SYSDATE FROM DUAL
+    </select>
+        
+    <!--    &lt;!&ndash; Complex query with multiple Oracle features &ndash;&gt;-->
+        
+    <!--    <select id="getComplexReport" resultType="ReportRow">-->
+        
+    <!--        SELECT-->
+        
+    <!--        u.user_id,-->
+        
+    <!--        u.username,-->
+        
+    <!--        NVL2(u.email, 'Has Email', 'No Email') as email_status,-->
+        
+    <!--        d.department_name,-->
+        
+    <!--        TRUNC(u.created_date) as created_date,-->
+        
+    <!--        MONTHS_BETWEEN(SYSDATE, u.created_date) as months_old,-->
+        
+    <!--        DECODE(u.status, 'A', 1, 0) as is_active-->
+        
+    <!--        FROM users u-->
+        
+    <!--        LEFT JOIN departments d ON u.department_id = d.department_id-->
+        
+    <!--        WHERE u.created_date >= ADD_MONTHS(SYSDATE, -12)-->
+        
+    <!--        AND ROWNUM <= 100-->
+        
+    <!--        ORDER BY u.created_date DESC-->
+        
+    <!--    </select>-->
+    
+</mapper>
